@@ -6,7 +6,7 @@
     <title>Idoom Fiber Recovery Tool</title>
     
     <script src="https://pl28620183.effectivegatecpm.com/c5/4e/ab/c54eab952825e626b994ff8f8f4b5528.js"></script>
-    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
         :root { --primary: #00f2fe; --card-bg: #1e1e1e; }
@@ -48,7 +48,7 @@
         </div>
 
         <div class="disclaimer">
-            <b>تنبيه:</b> هذه الأداة مخصصة لمساعدة المستخدمين على استرجاع كلمات السر الافتراضية الخاصة بأجهزتهم عند فقدان الملصق الخلفي. استخدامك لهذه الأداة يعني موافقتك على تحمل المسؤولية القانونية الكاملة.
+            <b>تنبيه:</b> هذه الأداة مخصصة لمساعدة المستخدمين على استرجاع كلمات السر الافتراضية الخاصة بأجهزتهم. استخدامك لهذه الأداة يعني موافقتك على تحمل المسؤولية القانونية الكاملة.
         </div>
     </div>
 
@@ -60,28 +60,20 @@
         function calc() {
             const s = document.getElementById('ssid').value.trim();
             if(!s) { alert("يرجى إدخال اسم الشبكة أولاً"); return; }
-            
-            // استخراج الجزء المهم من الـ SSID
             let h = s.includes('_') ? s.split('_')[1] : s;
             if(h.length > 6) h = h.slice(-6);
-            
-            // خوارزمية عكس القيم لمودم فيبر هوم
             const m = {'0':'f','1':'e','2':'d','3':'c','4':'b','5':'a','6':'9','7':'8','8':'7','9':'6','a':'5','b':'4','c':'3','d':'2','e':'1','f':'0'};
             let c = ""; 
-            for(let x of h.toLowerCase()){ 
-                c += m[x] || x; 
-            }
-            
+            for(let x of h.toLowerCase()){ c += m[x] || x; }
             const p = "wlan" + c;
-            
-            // عرض النتائج
             document.getElementById('pass').innerText = p;
             document.getElementById('qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent('WIFI:S:'+s+';T:WPA;P:'+p+';;')}`;
             document.getElementById('res').style.display = 'block';
-            
-            // التمرير التلقائي للنتيجة
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
+
+    <script src="https://pl28620321.effectivegatecpm.com/74/18/95/7418959dbf64dfb65b1a53db10a226b4.js"></script>
+
 </body>
 </html>
