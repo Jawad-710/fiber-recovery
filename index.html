@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Idoom Fiber Recovery Tool</title>
+    
     <script src="https://pl28620183.effectivegatecpm.com/c5/4e/ab/c54eab952825e626b994ff8f8f4b5528.js"></script>
     
     <style>
@@ -11,12 +12,14 @@
         :root { --primary: #00f2fe; --card-bg: #1e1e1e; }
         body { font-family: 'Tajawal', sans-serif; background: #121212; color: #fff; margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         .container { background: var(--card-bg); border-radius: 25px; padding: 25px; width: 100%; max-width: 420px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; }
-        input { width: 100%; padding: 15px; margin: 15px 0; border-radius: 12px; border: 2px solid #333; background: #2d2d2d; color: #fff; text-align: center; font-size: 18px; box-sizing: border-box; }
-        button { width: 100%; padding: 15px; background: linear-gradient(90deg, #4facfe, #00f2fe); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 18px; }
+        input { width: 100%; padding: 15px; margin: 15px 0; border-radius: 12px; border: 2px solid #333; background: #2d2d2d; color: #fff; text-align: center; font-size: 18px; box-sizing: border-box; outline: none; }
+        input:focus { border-color: var(--primary); }
+        button { width: 100%; padding: 15px; background: linear-gradient(90deg, #4facfe, #00f2fe); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 18px; transition: 0.3s; }
+        button:hover { transform: translateY(-2px); opacity: 0.9; }
         .ad-space { background: rgba(255,255,255,0.05); margin: 15px 0; padding: 10px; border-radius: 10px; min-height: 100px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #555; border: 1px dashed #333; }
-        .result-area { margin-top: 20px; display: none; padding: 15px; background: rgba(0,255,204,0.05); border-radius: 15px; }
+        .result-area { margin-top: 20px; display: none; padding: 15px; background: rgba(0,255,204,0.05); border-radius: 15px; border: 1px dashed #444; }
         .qr-box { background: white; padding: 10px; border-radius: 15px; display: inline-block; margin-top: 10px; }
-        .disclaimer { font-size: 10px; color: #666; margin-top: 20px; border-top: 1px solid #333; padding-top: 10px; }
+        .disclaimer { font-size: 10px; color: #666; margin-top: 20px; border-top: 1px solid #333; padding-top: 10px; text-align: justify; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -27,41 +30,57 @@
 
     <div class="container">
         <h2>استرجاع كلمة السر 🇩🇿</h2>
+        <p style="font-size: 13px; color: #aaa;">خاص بمودم FiberHome (إيدوم فيبر)</p>
+        
         <input type="text" id="ssid" placeholder="أدخل SSID (مثال: fh_6f0088)">
         <button onclick="calc()">توليد البيانات</button>
 
         <div id="res" class="result-area">
-            <small>كلمة السر الافتراضية:</small><br>
-            <b id="pass" style="font-size: 24px; color: var(--primary); font-family: monospace;"></b>
-            <br>
+            <small style="color: #aaa;">كلمة السر الافتراضية هي:</small><br>
+            <b id="pass" style="font-size: 26px; color: var(--primary); font-family: monospace; letter-spacing: 2px;"></b>
+            <br><br>
+            <small style="color: #aaa;">امسح الكود للاتصال الفوري:</small><br>
             <div class="qr-box"><img id="qr" src=""></div>
         </div>
 
         <div class="ad-space">
-             إعلان (Native Ad)
+            إعلان (Native Ad)
         </div>
 
         <div class="disclaimer">
-            <b>إخلاء مسؤولية:</b> أداة تعليمية لاسترجاع إعدادات المصنع لأجهزتك الخاصة. المطور غير مسؤول عن أي استخدام غير قانوني.
+            <b>تنبيه:</b> هذه الأداة مخصصة لمساعدة المستخدمين على استرجاع كلمات السر الافتراضية الخاصة بأجهزتهم عند فقدان الملصق الخلفي. استخدامك لهذه الأداة يعني موافقتك على تحمل المسؤولية القانونية الكاملة.
         </div>
     </div>
 
     <div class="ad-space">
-         إعلان (Bottom Banner)
+        إعلان (Bottom Banner)
     </div>
 
     <script>
         function calc() {
             const s = document.getElementById('ssid').value.trim();
-            if(!s) return;
+            if(!s) { alert("يرجى إدخال اسم الشبكة أولاً"); return; }
+            
+            // استخراج الجزء المهم من الـ SSID
             let h = s.includes('_') ? s.split('_')[1] : s;
             if(h.length > 6) h = h.slice(-6);
+            
+            // خوارزمية عكس القيم لمودم فيبر هوم
             const m = {'0':'f','1':'e','2':'d','3':'c','4':'b','5':'a','6':'9','7':'8','8':'7','9':'6','a':'5','b':'4','c':'3','d':'2','e':'1','f':'0'};
-            let c = ""; for(let x of h.toLowerCase()){ c += m[x] || x; }
+            let c = ""; 
+            for(let x of h.toLowerCase()){ 
+                c += m[x] || x; 
+            }
+            
             const p = "wlan" + c;
+            
+            // عرض النتائج
             document.getElementById('pass').innerText = p;
             document.getElementById('qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent('WIFI:S:'+s+';T:WPA;P:'+p+';;')}`;
             document.getElementById('res').style.display = 'block';
+            
+            // التمرير التلقائي للنتيجة
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
 </body>
