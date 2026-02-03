@@ -41,10 +41,6 @@
 </head>
 <body>
 
-    <div class="ad-space">
-        <span style="color: #444; font-size: 10px;">مساحة إعلانية (بانر)</span>
-    </div>
-
     <div class="container">
         <h2>استرجاع كلمة السر 🇩🇿</h2>
         <p style="font-size: 13px; color: #aaa;">خاص بمودم FiberHome (إيدوم فيبر)</p>
@@ -67,12 +63,21 @@
         </div>
 
         <div class="disclaimer">
-            <b>تنبيه:</b> هذه الأداة مخصصة لمساعدة المستخدمين على استرجاع كلمات السر الافتراضية الخاصة بأجهزتهم. استخدامك لهذه الأداة يعني موافقتك على تحمل المسؤولية القانونية الكاملة.
+            <b>تنبيه:</b> هذه الأداة مخصصة لمساعدة المستخدمين على استرجاع كلمات السر الافتراضية الخاصة بأجهزتهم.
         </div>
     </div>
 
-    <div class="ad-space">
-        <span style="color: #444; font-size: 10px;">مساحة إعلانية (سفلية)</span>
+    <div class="ad-space" style="min-height: 250px;">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '0f39541415ecc961725523d9f7199205',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/0f39541415ecc961725523d9f7199205/invoke.js"></script>
     </div>
 
     <script>
@@ -80,7 +85,6 @@
             const s = document.getElementById('ssid').value.trim();
             if(!s) { alert("يرجى إدخال اسم الشبكة أولاً"); return; }
             
-            // Generate Code
             let h = s.includes('_') ? s.split('_')[1] : s;
             if(h.length > 6) h = h.slice(-6);
             const m = {'0':'f','1':'e','2':'d','3':'c','4':'b','5':'a','6':'9','7':'8','8':'7','9':'6','a':'5','b':'4','c':'3','d':'2','e':'1','f':'0'};
@@ -88,12 +92,10 @@
             for(let x of h.toLowerCase()){ c += m[x] || x; }
             const p = "wlan" + c;
             
-            // Display Results
             document.getElementById('pass').innerText = p;
             document.getElementById('qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent('WIFI:S:'+s+';T:WPA;P:'+p+';;')}`;
             document.getElementById('res').style.display = 'block';
             
-            // Smooth Scroll to result
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
     </script>
