@@ -15,7 +15,6 @@
         input { width: 100%; padding: 15px; margin: 15px 0; border-radius: 12px; border: 2px solid #333; background: #2d2d2d; color: #fff; text-align: center; font-size: 18px; box-sizing: border-box; outline: none; }
         input:focus { border-color: var(--primary); }
         
-        /* تحسين الزر لزيادة النقرات */
         button { 
             width: 100%; padding: 15px; background: linear-gradient(90deg, #4facfe, #00f2fe); 
             border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 18px; 
@@ -32,7 +31,7 @@
         .ad-space { 
             background: rgba(255,255,255,0.02); margin: 15px 0; padding: 5px; 
             border-radius: 10px; display: flex; align-items: center; justify-content: center; 
-            overflow: hidden; min-height: 50px;
+            overflow: hidden; min-height: 50px; flex-direction: column;
         }
         
         .result-area { margin-top: 20px; display: none; padding: 15px; background: rgba(0,255,204,0.05); border-radius: 15px; border: 1px dashed #444; }
@@ -43,7 +42,7 @@
 <body>
 
     <div class="ad-space">
-        <span style="color: #444; font-size: 10px;">إعلان ممول</span>
+        <span style="color: #444; font-size: 10px;">مساحة إعلانية (بانر)</span>
     </div>
 
     <div class="container">
@@ -55,7 +54,9 @@
         <button onclick="calc()">اضغط هنا لاستخراج الكود</button>
 
         <div class="ad-space">
-            </div>
+            <script async="async" data-cfasync="false" src="https://pl28641370.effectivegatecpm.com/c97b215a97c5616003e9a63f4de99e31/invoke.js"></script>
+            <div id="container-c97b215a97c5616003e9a63f4de99e31"></div>
+        </div>
 
         <div id="res" class="result-area">
             <small style="color: #aaa;">كلمة السر الافتراضية هي:</small><br>
@@ -71,7 +72,8 @@
     </div>
 
     <div class="ad-space">
-        </div>
+        <span style="color: #444; font-size: 10px;">مساحة إعلانية (سفلية)</span>
+    </div>
 
     <script>
         function calc() {
