@@ -1,273 +1,113 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Idoom Fiber Recovery Tool - احترافي</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idoom Fiber Recovery Tool</title>
+    
+    <script src="https://pl28620183.effectivegatecpm.com/c5/4e/ab/c54eab952825e626b994ff8f8f4b5528.js"></script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        :root { --primary: #00f2fe; --card-bg: #1e1e1e; }
+        body { font-family: 'Tajawal', sans-serif; background: #121212; color: #fff; margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .container { background: var(--card-bg); border-radius: 25px; padding: 25px; width: 100%; max-width: 420px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; box-sizing: border-box; }
+        input { width: 100%; padding: 15px; margin: 15px 0; border-radius: 12px; border: 2px solid #333; background: #2d2d2d; color: #fff; text-align: center; font-size: 18px; box-sizing: border-box; outline: none; }
+        input:focus { border-color: var(--primary); }
+        button { width: 100%; padding: 15px; background: linear-gradient(90deg, #4facfe, #00f2fe); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 18px; transition: 0.3s; }
+        button:hover { transform: translateY(-2px); opacity: 0.9; }
+        .ad-container { margin: 20px 0; display: flex; justify-content: center; align-items: center; min-height: 50px; overflow: hidden; }
+        
+        /* تحسين منطقة النتيجة */
+        .result-area { 
+            margin-top: 20px; 
+            display: none; 
+            padding: 20px; 
+            background: rgba(0,255,204,0.05); 
+            border-radius: 15px; 
+            border: 1px dashed #444; 
+            text-align: center; 
+        }
+        
+        /* جعل كلمة السر بارزة وفي سطر منفصل */
+        #pass { 
+            display: block; 
+            margin: 15px 0; 
+            font-size: 28px; 
+            color: var(--primary); 
+            font-family: monospace; 
+            letter-spacing: 2px; 
+            background: #262626; 
+            padding: 12px; 
+            border-radius: 10px; 
+            border: 1px solid #333;
+            word-break: break-all;
+        }
 
-/* الثيمات */
-:root {
-    --primary: #00f2fe;
-    --bg-dark: #121212;
-    --text-dark: #fff;
-    --card-dark: #1e1e1e;
-
-    --bg-light: #f5f5f5;
-    --text-light: #000;
-    --card-light: #fff;
-}
-
-body {
-    font-family: 'Tajawal', sans-serif;
-    margin: 0;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    transition: background 0.3s, color 0.3s;
-}
-
-/* Theme Default: Dark */
-body.dark {
-    background: var(--bg-dark);
-    color: var(--text-dark);
-}
-
-body.light {
-    background: var(--bg-light);
-    color: var(--text-light);
-}
-
-.container {
-    border-radius: 25px;
-    padding: 25px;
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    text-align: center;
-    box-sizing: border-box;
-    transition: background 0.3s, color 0.3s;
-}
-
-body.dark .container { background: var(--card-dark); }
-body.light .container { background: var(--card-light); }
-
-input {
-    width: 100%;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 12px;
-    border: 2px solid #333;
-    background: #2d2d2d;
-    color: #fff;
-    text-align: center;
-    font-size: 18px;
-    box-sizing: border-box;
-    outline: none;
-    transition: background 0.3s, color 0.3s;
-}
-
-body.light input { background: #e8e8e8; color: #000; border: 2px solid #ccc; }
-input:focus { border-color: var(--primary); }
-
-button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.3s;
-    margin-bottom: 10px;
-}
-
-.button-generate { background: linear-gradient(90deg, #4facfe, #00f2fe); }
-.button-reset { background: #ff6b6b; }
-.button-auto { background: #1dd1a1; }
-.button-speed { background: #f39c12; }
-
-button:hover { transform: translateY(-2px); opacity: 0.9; }
-
-.result-area {
-    margin-top: 20px;
-    display: none;
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px dashed #444;
-    text-align: center;
-    transition: all 0.3s;
-}
-
-#pass {
-    display: block;
-    margin: 15px 0;
-    font-size: 28px;
-    color: var(--primary);
-    font-family: monospace;
-    letter-spacing: 2px;
-    background: #262626;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #333;
-    word-break: break-all;
-    cursor: pointer;
-    user-select: all;
-}
-
-body.light #pass { background: #e0e0e0; color: #0077cc; border: 1px solid #ccc; }
-
-.qr-box {
-    background: white;
-    padding: 10px;
-    border-radius: 15px;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.qr-box img {
-    display: block;
-    max-width: 200px;
-}
-
-.toggle-theme {
-    margin-bottom: 15px;
-    font-size: 14px;
-    cursor: pointer;
-    color: var(--primary);
-    text-decoration: underline;
-}
-</style>
+        .qr-box { background: white; padding: 10px; border-radius: 15px; display: inline-block; margin-top: 10px; }
+        .qr-box img { display: block; max-width: 140px; }
+    </style>
 </head>
-<body class="dark">
+<body>
 
-<div class="container">
-    <h2>استرجاع كلمة السر 🇩🇿</h2>
-    <p style="font-size: 13px; color: #aaa;">خاص بمودم FiberHome (إيدوم فيبر)</p>
+    <div class="container">
+        <h2>استرجاع كلمة السر 🇩🇿</h2>
+        <p style="font-size: 13px; color: #aaa;">خاص بمودم FiberHome (إيدوم فيبر)</p>
+        
+        <input type="text" id="ssid" placeholder="أدخل SSID (مثال: fh_6f0088)">
+        <button onclick="calc()">توليد البيانات</button>
 
-    <div class="toggle-theme" onclick="toggleTheme()">تبديل الثيم 🌙/☀️</div>
+        <div class="ad-container">
+            <script async="async" data-cfasync="false" src="https://pl28641370.effectivegatecpm.com/c97b215a97c5616003e9a63f4de99e31/invoke.js"></script>
+            <div id="container-c97b215a97c5616003e9a63f4de99e31"></div>
+        </div>
 
-    <input type="text" id="ssid" placeholder="أدخل SSID (مثال: fh_6f0088)">
-    <button class="button-generate" onclick="calc()">توليد البيانات</button>
-    <button class="button-reset" onclick="resetFields()">إعادة تعيين</button>
-    <button class="button-speed" onclick="measureSpeed()">قياس سرعة الإنترنت</button>
-
-    <div class="result-area" id="res">
-        <small style="color: #aaa;">كلمة السر الافتراضية هي (اضغط للنسخ):</small>
-        <b id="pass"></b>
-        <small style="color: #aaa;">امسح الكود للاتصال الفوري:</small><br>
-        <div class="qr-box"><img id="qr" src=""></div>
-        <button class="button-auto" onclick="autoConnect()">الاتصال التلقائي 🔌</button>
+        <div id="res" class="result-area">
+            <small style="color: #aaa;">كلمة السر الافتراضية هي:</small>
+            <b id="pass"></b>
+            
+            <small style="color: #aaa;">امسح الكود للاتصال الفوري:</small><br>
+            <div class="qr-box"><img id="qr" src=""></div>
+        </div>
     </div>
 
-    <div id="speedResults" style="display:none; margin-top: 20px;">
-        <p><strong>سرعة التنزيل:</strong> <span id="downloadSpeed"></span> Mbps</p>
-        <p><strong>سرعة الرفع:</strong> <span id="uploadSpeed"></span> Mbps</p>
-        <p><strong>الزمن (Latency):</strong> <span id="pingSpeed"></span> ms</p>
+    <div class="ad-container" style="margin-top: 30px;">
+        <script>
+          atOptions = {
+            'key' : '0f39541415ecc961725523d9f7199205',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/0f39541415ecc961725523d9f7199205/invoke.js"></script>
     </div>
 
-    <div class="ad-container" id="ad1">
-        <!-- إعلان 1 -->
-        <script async="async" data-cfasync="false" src="https://pl28641370.effectivegatecpm.com/c97b215a97c5616003e9a63f4de99e31/invoke.js"></script>
-        <div id="container-c97b215a97c5616003e9a63f4de99e31"></div>
-    </div>
-</div>
-
-<div class="ad-container" style="margin-top: 30px;" id="ad2">
-    <!-- إعلان 2 -->
     <script>
-      atOptions = {
-        'key' : '0f39541415ecc961725523d9f7199205',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
+        function calc() {
+            const s = document.getElementById('ssid').value.trim();
+            if(!s) return alert("يرجى إدخال اسم الشبكة (SSID)");
+            
+            let h = s.includes('_') ? s.split('_')[1] : s;
+            if(h.length > 6) h = h.slice(-6);
+            
+            const m = {'0':'f','1':'e','2':'d','3':'c','4':'b','5':'a','6':'9','7':'8','8':'7','9':'6','a':'5','b':'4','c':'3','d':'2','e':'1','f':'0'};
+            let c = ""; 
+            for(let x of h.toLowerCase()){ c += m[x] || x; }
+            
+            const p = "wlan" + c;
+            
+            document.getElementById('pass').innerText = p;
+            document.getElementById('qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent('WIFI:S:'+s+';T:WPA;P:'+p+';;')}`;
+            document.getElementById('res').style.display = 'block';
+            
+            // التمرير التلقائي للنتيجة لرؤية الإعلانات والنتيجة بوضوح
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
     </script>
-    <script src="https://www.highperformanceformat.com/0f39541415ecc961725523d9f7199205/invoke.js"></script>
-</div>
 
-<script>
-// قياس سرعة الإنترنت
-function measureSpeed() {
-    const downloadSpeed = document.getElementById("downloadSpeed");
-    const uploadSpeed = document.getElementById("uploadSpeed");
-    const pingSpeed = document.getElementById("pingSpeed");
-
-    // الاتصال بـ Fast.com API للحصول على سرعة التنزيل
-    fetch('https://api.fast.com/netflix/speedtest')
-    .then(response => response.json())
-    .then(data => {
-        downloadSpeed.innerText = (data.download / 1000000).toFixed(2); // تحويل السرعة من بت إلى ميغابت
-        uploadSpeed.innerText = 'غير متاح عبر هذه التقنية';
-        pingSpeed.innerText = 'غير قابل للقياس مباشرة';
-    });
-
-    document.getElementById('speedResults').style.display = 'block';
-}
-
-// توليد كلمة السر
-function calc() {
-    const ssid = document.getElementById('ssid').value.trim();
-    if(!ssid) return alert("يرجى إدخال اسم الشبكة (SSID)");
-
-    let h = ssid.includes('_') ? ssid.split('_')[1] : ssid;
-    if(h.length > 6) h = h.slice(-6);
-
-    const map = {'0':'f','1':'e','2':'d','3':'c','4':'b','5':'a','6':'9','7':'8','8':'7','9':'6','a':'5','b':'4','c':'3','d':'2','e':'1','f':'0'};
-    let converted = "";
-    for(let ch of h.toLowerCase()) converted += map[ch] || ch;
-
-    const password = "wlan" + converted;
-
-    const passEl = document.getElementById('pass');
-    passEl.innerText = password;
-
-    passEl.onclick = () => {
-        navigator.clipboard.writeText(password);
-        alert("تم نسخ كلمة السر!");
-    }
-
-    document.getElementById('qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent('WIFI:S:'+ssid+';T:WPA;P:'+password+';;')}`;
-
-    document.getElementById('res').style.display = 'block';
-    document.getElementById('ad1').style.display = 'none';
-    document.getElementById('ad2').style.display = 'none';
-
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-}
-
-function resetFields() {
-    document.getElementById('ssid').value = '';
-    document.getElementById('res').style.display = 'none';
-    document.getElementById('ad1').style.display = 'flex';
-    document.getElementById('ad2').style.display = 'flex';
-}
-
-function toggleTheme() {
-    if(document.body.classList.contains("dark")) {
-        document.body.classList.remove("dark");
-        document.body.classList.add("light");
-    } else {
-        document.body.classList.remove("light");
-        document.body.classList.add("dark");
-    }
-}
-
-function autoConnect() {
-    const ssid = document.getElementById('ssid').value.trim();
-    const password = document.getElementById('pass').innerText;
-    if(!ssid || !password) return alert("يرجى توليد كلمة السر أولاً");
-
-    const wifiLink = `wifi://ssid=${encodeURIComponent(ssid)}&password=${encodeURIComponent(password)}&type=WPA`;
-    window.location.href = wifiLink;
-    alert("إذا كان جهازك يدعم بروتوكول wifi، سيتم محاولة الاتصال تلقائياً.");
-}
-</script>
+    <script src="https://pl28620321.effectivegatecpm.com/74/18/95/7418959dbf64dfb65b1a53db10a226b4.js"></script>
 
 </body>
 </html>
