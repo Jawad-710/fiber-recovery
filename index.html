@@ -3,111 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idoom Fiber Recovery Tool</title>
-    
-    <script src="https://pl28620183.effectivegatecpm.com/c5/4e/ab/c54eab952825e626b994ff8f8f4b5528.js"></script>
+
+    <title>FiberHome Utility Tool</title>
+
+    <!-- خط عربي -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
-        :root { --primary: #00f2fe; --card-bg: #1e1e1e; }
-        body { font-family: 'Tajawal', sans-serif; background: #121212; color: #fff; margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .container { background: var(--card-bg); border-radius: 25px; padding: 25px; width: 100%; max-width: 420px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-align: center; box-sizing: border-box; }
-        input { width: 100%; padding: 15px; margin: 15px 0; border-radius: 12px; border: 2px solid #333; background: #2d2d2d; color: #fff; text-align: center; font-size: 18px; box-sizing: border-box; outline: none; }
-        input:focus { border-color: var(--primary); }
-        button { width: 100%; padding: 15px; background: linear-gradient(90deg, #4facfe, #00f2fe); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 18px; transition: 0.3s; }
-        button:hover { transform: translateY(-2px); opacity: 0.9; }
-        .ad-container { margin: 20px 0; display: flex; justify-content: center; align-items: center; min-height: 50px; overflow: hidden; }
-        
-        /* تحسين منطقة النتيجة */
-        .result-area { 
-            margin-top: 20px; 
-            display: none; 
-            padding: 20px; 
-            background: rgba(0,255,204,0.05); 
-            border-radius: 15px; 
-            border: 1px dashed #444; 
-            text-align: center; 
-        }
-        
-        /* جعل كلمة السر بارزة وفي سطر منفصل */
-        #pass { 
-            display: block; 
-            margin: 15px 0; 
-            font-size: 28px; 
-            color: var(--primary); 
-            font-family: monospace; 
-            letter-spacing: 2px; 
-            background: #262626; 
-            padding: 12px; 
-            border-radius: 10px; 
-            border: 1px solid #333;
-            word-break: break-all;
+        :root{
+            --primary:#00f2fe;
+            --secondary:#4facfe;
+            --bg:#121212;
+            --card:#1e1e1e;
+            --input:#2d2d2d;
         }
 
-        .qr-box { background: white; padding: 10px; border-radius: 15px; display: inline-block; margin-top: 10px; }
-        .qr-box img { display: block; max-width: 140px; }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Tajawal',sans-serif;
+            background:var(--bg);
+            color:white;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
+
+        .container{
+            width:100%;
+            max-width:430px;
+            background:var(--card);
+            border-radius:25px;
+            padding:25px;
+            box-shadow:0 20px 50px rgba(0,0,0,.5);
+            text-align:center;
+        }
+
+        h2{
+            font-size:28px;
+            margin-bottom:10px;
+        }
+
+        .desc{
+            color:#aaa;
+            font-size:14px;
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:15px;
+            border:none;
+            outline:none;
+            border-radius:14px;
+            background:var(--input);
+            color:white;
+            font-size:18px;
+            text-align:center;
+            border:2px solid transparent;
+            transition:.3s;
+        }
+
+        input:focus{
+            border-color:var(--primary);
+        }
+
+        button{
+            width:100%;
+            margin-top:15px;
+            padding:15px;
+            border:none;
+            border-radius:14px;
+            background:linear-gradient(90deg,var(--secondary),var(--primary));
+            color:white;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        button:hover{
+            transform:translateY(-2px);
+            opacity:.9;
+        }
+
+        .ad-container{
+            margin:20px 0;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .ad-container img{
+            max-width:100%;
+            border-radius:15px;
+        }
+
+        .result-area{
+            margin-top:25px;
+            padding:20px;
+            border-radius:18px;
+            background:rgba(255,255,255,.03);
+            border:1px solid #333;
+            display:none;
+        }
+
+        #pass{
+            display:block;
+            margin:15px 0;
+            font-size:30px;
+            color:var(--primary);
+            background:#262626;
+            padding:15px;
+            border-radius:12px;
+            font-family:monospace;
+            word-break:break-all;
+            border:1px solid #333;
+        }
+
+        .qr-box{
+            background:white;
+            display:inline-block;
+            padding:10px;
+            border-radius:15px;
+            margin-top:10px;
+        }
+
+        .qr-box img{
+            width:150px;
+            height:150px;
+            display:block;
+        }
+
+        .footer{
+            margin-top:20px;
+            color:#777;
+            font-size:12px;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        <h2>استرجاع كلمة السر 🇩🇿</h2>
-        <p style="font-size: 13px; color: #aaa;">خاص بمودم FiberHome (إيدوم فيبر)</p>
-        
-        <input type="text" id="ssid" placeholder="أدخل SSID (مثال: fh_6f0088)">
-        <button onclick="calc()">توليد البيانات</button>
 
+        <h2>FiberHome Utility Tool</h2>
+
+        <p class="desc">
+            أداة مساعدة لأجهزة FiberHome
+        </p>
+
+        <!-- إعلان علوي -->
         <div class="ad-container">
-            <script async="async" data-cfasync="false" src="https://pl28641370.effectivegatecpm.com/c97b215a97c5616003e9a63f4de99e31/invoke.js"></script>
-            <div id="container-c97b215a97c5616003e9a63f4de99e31"></div>
+            <a href="https://shrinkme.io/ref/110492592696413719959" target="_blank">
+                <img 
+                    src="https://shrinkme.io/banners/ref/728x90.png"
+                    alt="ShrinkMe Banner"
+                >
+            </a>
         </div>
 
+        <!-- إدخال -->
+        <input 
+            type="text" 
+            id="ssid" 
+            placeholder="أدخل SSID مثال fh_6f0088"
+        >
+
+        <!-- زر -->
+        <button onclick="calc()">
+            توليد البيانات
+        </button>
+
+        <!-- إعلان -->
+        <div class="ad-container">
+            <a href="https://shrinkme.click/steamtools2026" target="_blank">
+                <img 
+                    src="https://shrinkme.io/banners/ref/300x250.png"
+                    alt="ShrinkMe Banner"
+                >
+            </a>
+        </div>
+
+        <!-- النتيجة -->
         <div id="res" class="result-area">
-            <small style="color: #aaa;">كلمة السر الافتراضية هي:</small>
-            <b id="pass"></b>
-            
-            <small style="color: #aaa;">امسح الكود للاتصال الفوري:</small><br>
-            <div class="qr-box"><img id="qr" src=""></div>
-        </div>
-    </div>
 
-    <div class="ad-container" style="margin-top: 30px;">
-        <script>
-          atOptions = {
-            'key' : '0f39541415ecc961725523d9f7199205',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-          };
-        </script>
-        <script src="https://www.highperformanceformat.com/0f39541415ecc961725523d9f7199205/invoke.js"></script>
+            <small style="color:#aaa;">
+                كلمة السر الافتراضية:
+            </small>
+
+            <b id="pass"></b>
+
+            <small style="color:#aaa;">
+                امسح QR للاتصال
+            </small>
+
+            <br>
+
+            <div class="qr-box">
+                <img id="qr" src="">
+            </div>
+
+            <!-- إعلان بعد النتيجة -->
+            <div class="ad-container" style="margin-top:25px;">
+                <a href="https://shrinkme.click/steamtools2026" target="_blank">
+                    <img 
+                        src="https://shrinkme.io/banners/ref/300x250.png"
+                        alt="ShrinkMe Banner"
+                    >
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            © 2026 FiberHome Tool
+        </div>
+
     </div>
 
     <script>
-        function calc() {
-            const s = document.getElementById('ssid').value.trim();
-            if(!s) return alert("يرجى إدخال اسم الشبكة (SSID)");
-            
-            let h = s.includes('_') ? s.split('_')[1] : s;
-            if(h.length > 6) h = h.slice(-6);
-            
-            const m = {'0':'f','1':'e','2':'d','3':'c','4':'b','5':'a','6':'9','7':'8','8':'7','9':'6','a':'5','b':'4','c':'3','d':'2','e':'1','f':'0'};
-            let c = ""; 
-            for(let x of h.toLowerCase()){ c += m[x] || x; }
-            
-            const p = "wlan" + c;
-            
-            document.getElementById('pass').innerText = p;
-            document.getElementById('qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent('WIFI:S:'+s+';T:WPA;P:'+p+';;')}`;
-            document.getElementById('res').style.display = 'block';
-            
-            // التمرير التلقائي للنتيجة لرؤية الإعلانات والنتيجة بوضوح
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-    </script>
 
-    <script src="https://pl28620321.effectivegatecpm.com/74/18/95/7418959dbf64dfb65b1a53db10a226b4.js"></script>
+        function calc(){
+
+            const s = document
+                .getElementById('ssid')
+                .value
+                .trim();
+
+            if(!s){
+
+                alert("يرجى إدخال SSID");
+
+                return;
+            }
+
+            let h = s.includes('_')
+                ? s.split('_')[1]
+                : s;
+
+            if(h.length > 6){
+
+                h = h.slice(-6);
+            }
+
+            const m = {
+                '0':'f',
+                '1':'e',
+                '2':'d',
+                '3':'c',
+                '4':'b',
+                '5':'a',
+                '6':'9',
+                '7':'8',
+                '8':'7',
+                '9':'6',
+                'a':'5',
+                'b':'4',
+                'c':'3',
+                'd':'2',
+                'e':'1',
+                'f':'0'
+            };
+
+            let c = "";
+
+            for(let x of h.toLowerCase()){
+
+                c += m[x] || x;
+            }
+
+            const p = "wlan" + c;
+
+            document.getElementById('pass').innerText = p;
+
+            document.getElementById('qr').src =
+                `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${
+                    encodeURIComponent(
+                        'WIFI:S:'+s+';T:WPA;P:'+p+';;'
+                    )
+                }`;
+
+            document.getElementById('res').style.display = 'block';
+
+            window.scrollTo({
+                top:document.body.scrollHeight,
+                behavior:'smooth'
+            });
+        }
+
+    </script>
 
 </body>
 </html>
